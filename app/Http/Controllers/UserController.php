@@ -18,4 +18,13 @@ class UserController extends Controller
     {
         return view('contact');
     }
+    public function details()
+    {
+        return view('form-details');
+    }
+    public function admit()
+    {
+        return view('admit');
+    }
+
 }

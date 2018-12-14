@@ -7,7 +7,7 @@
         <p align="center" style="margin-top: -8px;  font-family: serif; font-weight: bold; color: #AD1457; font-size: 30px;">Application Form for M.Sc. (Engg.)/M.Engg. (CSE) Program</p>
     </marquee>
 
-    <div class="container" style="margin-top: 20px; margin-left: 300px; color:#009688; font-weight: bold;">
+    <div class="container" style="margin-top: 20px; margin-left: 200px; color:#009688; font-weight: bold;">
 
         <form enctype="multipart/form-data">
             <div class="form-row">
@@ -51,7 +51,7 @@
                     <label for="inputZip" class="col-form-label">9. Academic Qualifications (SSC to B.Sc. and others) :</label>
                     <br>
                     <br>
-                    <table class="table table-hover" style="text-align: center">
+                    <table class="table table-hover" style="text-align: center;">
                         <thead class="thead-dark ">
 
                         <tr>

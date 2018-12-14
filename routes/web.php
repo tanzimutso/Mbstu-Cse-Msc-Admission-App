@@ -18,5 +18,7 @@ Route::get('/', function () {
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/application-form', 'UserController@form')->name('form');
 Route::get('/contact', 'UserController@contact')->name('contact');
-Route::get('/applicants-details', 'AdminController@Applicants')->name('applicant-list');
+Route::get('/applicants', 'AdminController@Applicants')->name('applicant-list');
 Route::get('/search', 'AdminController@search')->name('search');
+Route::get('/applicant-details', 'UserController@details')->name('details');
+Route::get('/admit', 'UserController@admit')->name('admit');
