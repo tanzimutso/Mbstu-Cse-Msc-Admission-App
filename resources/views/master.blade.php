@@ -11,6 +11,9 @@
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+
+    <link href="{{ url('assets/css/custom.css') }}" rel="stylesheet">
+
 </head>
 <body>
 
@@ -43,4 +46,5 @@
 </body>
 
 @yield('script')
+
 </html>

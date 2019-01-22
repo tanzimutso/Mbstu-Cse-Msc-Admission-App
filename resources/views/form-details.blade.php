@@ -33,48 +33,55 @@
 </div>
 
 <div class="container" style="margin-top: 40px; margin-left: 200px; color:#009688; font-weight: bold;">
+    <div class="col-md-12">
+        @if(Session::has('message'))
+            <div class="alert alert-{{ session('status') }}">
+                {{ session('message') }}
+            </div>
+        @endif
+            @foreach($students as $student)
+    <p style="margin-left: 700px;"><img src="{{ url('uploads/picture/' . $student->picture) }}" alt="image" height="160px" width="150px"/></p>
+    <form >
 
-    <p style="height: 100px; width: 100px; border: solid #009688 2px; margin-left: 700px;"><img src="" alt="image"/></p>
-    <form enctype="multipart/form-data">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4" class="col-form-label">1. Name of the Applicant (as per SSC) :</label>
+                <label for="inputEmail4" class="col-form-label">1. Name of the Applicant (as per SSC) : <span style="color: #882951; font-size: 20px; margin-left: 5px;"> {{ $student->name }}</span></label>
 
             </div>
             <div class="form-group col-md-8">
-                <label for="inputPassword4" class="col-form-label">2. Father's Name :</label>
-
-            </div>
-
-            <div class="form-group col-md-8">
-                <label for="inputAddress" class="col-form-label">3. Mother's Name :</label>
-
-            </div>
-            <div class="form-group col-md-8">
-                <label for="inputAddress2" class="col-form-label">4. Local Gurdian's name :</label>
-
-            </div>
-            <div class="form-group col-md-8">
-                <label for="inputCity" class="col-form-label">5. Present Address (With Contact number) :</label>
-
-            </div>
-            <div class="form-group col-md-8">
-                <label for="inputZip" class="col-form-label">6. Permanent Address (With Contact number) :</label>
+                <label for="inputPassword4" class="col-form-label">2. Father's Name :<span style="color: #882951; font-size: 20px; margin-left: 5px;">  {{ $student->father_name }} </span></label>
 
             </div>
 
             <div class="form-group col-md-8">
-                <label for="inputZip" class="col-form-label">7. Date of Birth (mm/dd/yyyy):</label>
+                <label for="inputAddress" class="col-form-label">3. Mother's Name : <span style="color: #882951; font-size: 20px; margin-left: 5px;"> {{ $student->mother_name }}</span></label>
+
+            </div>
+            <div class="form-group col-md-8">
+                <label for="inputAddress2" class="col-form-label">4. Local Gurdian's name : <span style="color: #882951; font-size: 20px; margin-left: 5px;"> {{ $student->local_guardian_name }}</span></label>
+
+            </div>
+            <div class="form-group col-md-8">
+                <label for="inputCity" class="col-form-label">5. Present Address (With Contact number) : <span style="color: #882951; font-size: 20px; margin-left: 5px;"> {{ $student->present_address }}</span> </label>
+
+            </div>
+            <div class="form-group col-md-8">
+                <label for="inputZip" class="col-form-label">6. Permanent Address (With Contact number) : <span style="color: #882951; font-size: 20px; margin-left: 5px;"> {{ $student->permanent_address }}</span></label>
 
             </div>
 
             <div class="form-group col-md-8">
-                <label for="inputZip" class="col-form-label">8. Nationality :</label>
+                <label for="inputZip" class="col-form-label">7. Date of Birth (mm/dd/yyyy):<span style="color: #882951; font-size: 20px; margin-left: 5px;">  {{ $student->date_of_birth }}</span></label>
+
+            </div>
+
+            <div class="form-group col-md-8">
+                <label for="inputZip" class="col-form-label">8. Nationality :<span style="color: #882951; font-size: 20px; margin-left: 5px;">  {{ $student->nationality }}</span></label>
 
             </div>
 
             <div class="form-group col-md-10">
-                <label for="inputZip" class="col-form-label">9. Academic Qualifications (SSC to B.Sc. and others) :</label>
+                <label for="inputZip" class="col-form-label">9. Academic Qualifications (SSC to B.Sc. and others) : </label>
                 <br>
                 <br>
                 <table class="table table-hover" style="text-align: center;">
@@ -161,40 +168,41 @@
             </div>
 
             <div class="form-group col-md-8">
-                <label for="inputEmail4" class="col-form-label">10. Applicant's Emergency Contact :</label>
+                <label for="inputEmail4" class="col-form-label">10. Applicant's Emergency Contact : {{ $student->emergency_contact }}</label>
 
             </div>
 
             <div class="form-group col-md-8">
-                <label for="inputEmail4" class="col-form-label">11. Email :</label>
+                <label for="inputEmail4" class="col-form-label">11. Email : {{ $student->email }}</label>
 
             </div>
 
             <div class="form-group col-md-8">
-                <label for="inputEmail4" class="col-form-label">12. bKash transaction ID :</label>
+                <label for="inputEmail4" class="col-form-label">12. bKash transaction ID : {{ $student->bkash_transaction_no }}</label>
 
             </div><br><br><br><br>
 
             <div class="form-group col-md-6">
-                <label for="inputEmail4" class="col-form-label">Date :</label>
+                <label for="inputEmail4" class="col-form-label">Date : {{ date("d/m/Y") }}</label>
             </div>
 
             <div class="form-group col-md-6">
-                <p style="height: 40px; width: 200px; border: solid #009688 2px; "><img src="" alt="signature"/></p>
+                <p style="height: 40px; width: 200px; border: solid #009688 2px; "><img src="{{ url('uploads/signature/' .$student->signature) }}" alt="signature" height="40px" width="200px"/></p>
                 <label for="inputEmail4" class="col-form-label">.....................................................</label><br>
                 <label for="inputEmail4" class="col-form-label">Signature of the Applicant</label>
             </div>
 
         </div>
+        @endforeach
 
         <br><br>
-     <div style="margin-left: -150px;">
+
+     <div style="margin-left: -150px; margin-bottom: 20px;">
         <button type="submit" id="printPageButton" onclick="window.print();" class="btn btn-lg btn-outline-info" style="margin-left: 270px;">Print Form</button>
         <button type="submit" id="printPageButton2" onclick="window.open('{{ route('admit') }}','Popup', 'height=800, width=1700, status=no, toolbar=no, menubar=no, location=no, top = 1, left=1').print();" class="btn btn-lg btn-outline-warning" style="margin-left: 270px;">Print Admit</button>
      </div>
     </form>
 
-    <br><br> <br><br> <br><br>
 
 
 </div>

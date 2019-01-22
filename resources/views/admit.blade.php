@@ -24,21 +24,24 @@
 </div>
 
 <div class="container" style="margin-top: 40px; margin-left: 200px; color:#009688; font-weight: bold;">
+    @foreach($applicant as $student)
+        <p style="margin-left: 700px;"><img src="{{ url('uploads/picture/' . $student->picture) }}" alt="image" height="160px" width="150px"/></p>
 
-    <p style="height: 100px; width: 100px; border: solid #009688 2px; margin-left: 700px;"><img src="" alt="image"/></p>
-    <form enctype="multipart/form-data">
+        <form enctype="multipart/form-data">
+
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4" class="col-form-label">1. Name of the Applicant (as per SSC) :</label>
+                <label for="inputEmail4" class="col-form-label">1. Name of the Applicant (as per SSC) : {{ $student->name }}</label>
 
             </div>
             <div class="form-group col-md-8">
-                <label for="inputPassword4" class="col-form-label">2. Father's Name :</label>
+                <label for="inputPassword4" class="col-form-label">2. Father's Name : {{ $student->father_name }}</label>
 
             </div>
        <br><br><br>
             <div class="form-group col-md-8">
-                <p style="height: 40px; width: 200px; border: solid #009688 2px; "><img src="" alt="applicant signature"/></p>
+                <p><img src="" alt="applicant signature"/></p>
+                <p><img src="{{ url('uploads/signature/' .$student->signature) }}" alt="signature" height="40px" width="200px"/></p>
                 <label for="inputEmail4" class="col-form-label">.....................................................</label><br>
                 <label for="inputEmail4" class="col-form-label">Signature of the Applicant</label>
             </div>
@@ -48,6 +51,7 @@
                 <label for="inputEmail4" class="col-form-label">Signature of the Chairman</label>
             </div>
         </div>
+            @endforeach
     </form>
 </div>
 </body>

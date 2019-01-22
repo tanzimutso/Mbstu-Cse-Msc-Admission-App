@@ -8,43 +8,49 @@
     </marquee>
 
     <div class="container" style="margin-top: 20px; margin-left: 200px; color:#009688; font-weight: bold;">
-
-        <form enctype="multipart/form-data">
+        <div class="col-md-12">
+            @if(Session::has('message'))
+                <div class="alert alert-{{ session('status') }}">
+                    {{ session('message') }}
+                </div>
+            @endif
+        <form action="{{ route('applicant_details_store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-row">
                 <div class="form-group col-md-8">
-                    <label for="inputEmail4" class="col-form-label">1. Name of the Applicant (as per SSC) :</label>
-                    <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                    <label for="name" class="col-form-label">1. Name of the Applicant (as per SSC) :</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name" required>
                 </div>
                 <div class="form-group col-md-8">
-                    <label for="inputPassword4" class="col-form-label">2. Father's Name :</label>
-                    <input type="text" class="form-control" id="inputPassword4" placeholder="Password">
+                    <label for="father's_name" class="col-form-label">2. Father's Name :</label>
+                    <input type="text" class="form-control" name="father_name" placeholder="Father's Name" required>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputAddress" class="col-form-label">3. Mother's Name :</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    <input type="text" class="form-control" name="mother_name" placeholder="Mother's Name" required>
                 </div>
                 <div class="form-group col-md-8">
-                    <label for="inputAddress2" class="col-form-label">4. Local Gurdian's name :</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    <label for="inputAddress2" class="col-form-label">4. Local Guardian's name :</label>
+                    <input type="text" class="form-control" name="local_guardian_name" placeholder="Local Guardian's name">
                 </div>
                 <div class="form-group col-md-8">
                     <label for="inputCity" class="col-form-label">5. Present Address (With Contact number) :</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <input type="text" class="form-control" name="present_address" required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="inputZip" class="col-form-label">6. Permanent Address (With Contact number) :</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <input type="text" class="form-control" name="permanent_address" required>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputZip" class="col-form-label">7. Date of Birth (mm/dd/yyyy):</label>
-                    <input type="date" class="form-control" id="inputZip">
+                    <input type="date" class="form-control" name="date_of_birth" required>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputZip" class="col-form-label">8. Nationality :</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <input type="text" class="form-control" name="nationality" required>
                 </div>
 
                 <div class="form-group col-md-10">
@@ -74,16 +80,16 @@
                                 </select>
                             </th>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="ssc_passing_year" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="ssc_board" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="ssc_cgpa" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="ssc_class">
                             </td>
                         </tr>
                         <tr>
@@ -96,16 +102,16 @@
                                 </select>
                             </th>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="hsc_passing_year" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="hsc_board" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="hsc_cgpa" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="hsc_class">
                             </td>
                         </tr>
                         <tr>
@@ -117,16 +123,16 @@
                                 </select>
                             </th>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="bsc_passing_year" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="bsc_university" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="bsc_cgpa" required>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" name="bsc_class">
                             </td>
                         </tr>
                         </tbody>
@@ -136,43 +142,39 @@
 
                 <div class="form-group col-md-8">
                     <label for="inputEmail4" class="col-form-label">10. Applicant's Emergency Contact :</label>
-                    <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="text" class="form-control" name="emergency_contact" placeholder="Applicant's Emergency Contact" required>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputEmail4" class="col-form-label">11. Email :</label>
-                    <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputEmail4" class="col-form-label">12. bKash transaction ID :</label>
-                    <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="text" class="form-control" name="bkash_transaction_no" placeholder="bKash transaction ID" required>
                 </div>
 
 
                 <div class="form-group col-md-8">
                     <label for="inputEmail4" class="col-form-label">13. Upload PP size photo:</label>
-                    <div class="input-group input-file" name="Fichier1">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default btn-choose" type="button">Choose</button>
-                            </span>
-                        <input type="text" class="form-control" placeholder='Choose a file...' />
-                        <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-reset" type="button">Reset</button>
-                            </span>
+                    <div class="file-upload">
+                        <div class="file-select">
+                            <div class="file-select-button" id="fileName">Choose File</div>
+                            <div class="file-select-name" id="noFile">No file chosen...</div>
+                            <input type="file" name="picture" id="chooseFile">
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group col-md-8">
                     <label for="inputEmail4" class="col-form-label">14. Upload Signature:</label>
-                    <div class="input-group input-file" name="Fichier1">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default btn-choose" type="button">Choose</button>
-                            </span>
-                        <input type="text" class="form-control" placeholder='Choose a file...' />
-                        <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-reset" type="button">Reset</button>
-                            </span>
+                    <div class="file-upload2">
+                        <div class="file-select2">
+                            <div class="file-select-button2" id="fileName2">Choose File</div>
+                            <div class="file-select-name2" id="noFile2">No file chosen...</div>
+                            <input type="file" name="signature" id="chooseFile2">
+                        </div>
                     </div>
                 </div>
 
@@ -181,48 +183,43 @@
 
             <br><br>
 
-            <button type="submit" class="btn btn-lg btn-outline-success" style="margin-left: 270px;">Apply Now</button>
+            <input type="submit" class="btn btn-lg btn-outline-success" value="Apply Now" style="margin-left: 270px;"/>
         </form>
 
         <br><br> <br><br> <br><br>
 
 
-</div>
+        </div>
+    </div>
 
 @endsection
 
 @section('script')
-    <script>
 
-        function bs_input_file() {
-            $(".input-file").before(
-                function() {
-                    if ( ! $(this).prev().hasClass('input-ghost') ) {
-                        var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-                        element.attr("name",$(this).attr("name"));
-                        element.change(function(){
-                            element.next(element).find('input').val((element.val()).split('\\').pop());
-                        });
-                        $(this).find("button.btn-choose").click(function(){
-                            element.click();
-                        });
-                        $(this).find("button.btn-reset").click(function(){
-                            element.val(null);
-                            $(this).parents(".input-file").find('input').val('');
-                        });
-                        $(this).find('input').css("cursor","pointer");
-                        $(this).find('input').mousedown(function() {
-                            $(this).parents('.input-file').prev().click();
-                            return false;
-                        });
-                        return element;
-                    }
+    <script>
+            $('#chooseFile').bind('change', function () {
+                var filename = $("#chooseFile").val();
+                if (/^\s*$/.test(filename)) {
+                    $(".file-upload").removeClass('active');
+                    $("#noFile").text("No file chosen...");
                 }
-            );
-        }
-        $(function() {
-            bs_input_file();
-        });
+                else {
+                    $(".file-upload").addClass('active');
+                    $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
+
+            $('#chooseFile2').bind('change', function () {
+                var filename = $("#chooseFile2").val();
+                if (/^\s*$/.test(filename)) {
+                    $(".file-upload2").removeClass('active');
+                    $("#noFile2").text("No file chosen...");
+                }
+                else {
+                    $(".file-upload2").addClass('active');
+                    $("#noFile2").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
 
     </script>
-    @endsection
+@endsection

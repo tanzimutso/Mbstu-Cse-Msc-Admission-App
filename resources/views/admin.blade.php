@@ -1,7 +1,11 @@
 @extends('master2')
 
 @section('content')
-
+    @if(Session::has('message'))
+        <div class="alert alert-{{ session('status') }}">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="container" style="margin-top: 30px;">
         <div class="card">
             <div class="card-header">
@@ -30,25 +34,27 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $count = 1;
+                     $form_no = 2701;
+                    ?>
+                    @foreach($students as $student)
                         <tr>
-                            <td>1</td>
-                            <td>Tanzim Islam Utso</td>
-                            <td>2706</td>
-                            <td>01515607055</td>
-                            <td>4JT5021BD7</td>
-                            <td>mail@m.com</td>
-                            <td>MBSTU</td>
+                            <td>{{ $count++ }}</td>
+                            <td>{{ $student->name }}</td>
+                            <td>{{ $form_no++ }}</td>
+                            <td>{{ $student->emergency_contact }}</td>
+                            <td>{{ $student->bkash_transaction_no }}</td>
+                            <td>{{ $student->email }}</td>
+                            <td>{{ $student->bsc_university }}</td>
                             <td>
-                                <a class="btn btn-success" href="">
-                                    Show
-                                </a>
                                 <a class="btn btn-danger delete" style="color: #fff;">
                                             Delete</a>
-                                        <input class="delete_url" type="hidden" value="">
+                                <input class="delete_url" type="hidden" value="{{ route('applicant_delete', ['id' => $student->id]) }}">
 
                             </td>
 
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
